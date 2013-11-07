@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html manifest="demo.manifest">
+<!--HTTP-HEAD:WapVersion:aXBob25l,Cache-Control:max-age=600:HTTP-HEAD-->
+<html v="xxx" manifest="demo.manifest">
 <head>
     <meta charset="utf-8"/>
     <!--允许全屏-->
@@ -25,9 +26,14 @@
     <section class="content"></section>
     <footer class="toolbar"></footer>
 </div>
-<!--TMS:/rgn/base/whole/adsbn.html:TMS-->
-<script type="text/javascript" webapp="mc"
-        src="http://g.tbcdn.cn/mtb/??zepto/1.0.2/zepto.js,mixsln/0.4.3/mixsln.js,mixsln/0.4.3/plugins/domevent.js,mixsln/0.4.3/plugins/lazyload.js,mixsln/0.4.3/plugins/loading.js,mixsln/0.4.3/plugins/pullbounce.js,mixsln/0.4.3/plugins/scrollpos.js,mixsln/0.4.3/plugins/slideview.js,mixsln/0.4.3/plugins/stateStorage.js,lib-awp/0.1.1/plugins/old/pagenotify.js,lib-pagenav/0.0.2/pagenav.js,lib-mtop/0.5.1/mtop.js,lib-login/0.2.3/login.js,lib-mtop/0.5.1/logined.js,lib-awp/0.1.9/product.js,lib-awp/0.1.6/combo.js,lib-awp/0.1.4/namespace.js,lib-notification/0.1.0/notification.js,lib-smartbanner/0.2.6/mixplugin.js"></script>
+<!--COMBO:webapp="mc"-->
+<script type="text/javascript" src="http://g.tbcdn.cn/mtb/zepto/1.0.2/zepto.js"></script>
+<script type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-mtop/0.5.1/mtop.js"></script>
+<script type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-login/0.2.3/login.js"></script>
+<script type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-mtop/0.5.1/logined.js"></script>
+<!--:COMBO-->
+<script type="text/javascript" webapp="im"
+        src="http://g.tbcdn.cn/mtb/lib-awp/0.1.9/product.js"></script>
 <script>
     var ttid = window.lib.uri.getParam("ttid");
     if (ttid) {

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<!--HTTP-HEAD:WapVersion:aXBob25l,Cache-Control:max-age=600:HTTP-HEAD-->
+<html v="xxx" manifest="demo.manifest">
+<head>
+    <meta charset="utf-8"/>
+    <!--允许全屏-->
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <link rel="apple-touch-icon" href="favicon.png"/>
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <title>淘宝网</title>
+    <link webapp="im" href="http://g.tbcdn.cn/mtb/mixsln/0.4.3/mixsln-notheme.css">
+    <link webapp="ic" href="http://g.tbcdn.cn/mtb/lib-container/mixsln_new.css">
+    <script>
+        if (!location.hash) {
+            location.hash = "!/awp/base/cart.htm";
+        }
+    </script>
+</head>
+<body>
+<div class="viewport">
+    <header class="navbar"></header>
+    <section class="content"></section>
+    <footer class="toolbar"></footer>
+</div>
+<!--TMS:/rgn/base/whole/adsbn.html:TMS-->
+<!--COMBO:webapp="mc"-->
+<script type="text/javascript" src="http://g.tbcdn.cn/mtb/zepto/1.0.2/zepto.js"></script>
+<script type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-mtop/0.5.1/mtop.js"></script>
+<script type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-login/0.2.3/login.js"></script>
+<script type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-mtop/0.5.1/logined.js"></script>
+<!--:COMBO-->
+<script type="text/javascript" webapp="im"
+        src="http://g.tbcdn.cn/mtb/lib-smartbanner/0.2.6/mixplugin.js"></script>
+<script>
+    var ttid = window.lib.uri.getParam("ttid");
+    if (ttid) {
+        document.write('<scr' + 'ipt src="http://g.tbcdn.cn/mtb/lib-windvane/1.1.3/??bridge.js,api.js,hooks.js"></scr' + 'ipt>');
+    }
+</script>
+<script>
+    app.start();
+</script>
+</body>
+</html>

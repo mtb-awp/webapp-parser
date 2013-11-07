@@ -8,6 +8,7 @@ require('colours');
 program.version('0.0.1')
     .usage('在本地预览webapp平台build的效果，html+manifest')
     .option('-o, --dest <string>', 'output dir')
+    .option('-c, --comboUrl <string>', 'combo url : http://g.tbcdn.cn')
     .option('-d, --dir <string>', 'base url, 资源对应的基准目录')
     .option('-f, --files <string>', '需要build的文件列表,如 file1,file2,file3');
 

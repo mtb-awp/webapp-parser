@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html manifest="index.manifest">
+<head>
+    <meta charset="utf-8"/>
+    <title>宝贝详情</title>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+    <link webapp="i" href="http://g.tbcdn.cn/mtb/mixsln/0.4.3/mixsln-notheme.css" />
+</head>
+<body>
+<div class="viewport">
+    <header class="navbar"></header>
+    <section class="content"></section>
+    <footer class="toolbar"></footer>
+</div>
+<!--TMS:/rgn/base/whole/adsbn.html:TMS-->
+<!--COMBO:webapp="mc" -->
+<script  type="text/javascript" src="http://g.tbcdn.cn/mtb/zepto/1.0.2/zepto.js"></script>
+<script  type="text/javascript" src="http://g.tbcdn.cn/mtb/mixsln/0.4.3/mixsln.js"></script>
+<script  type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-h5init/1.0.0/h5init.js"></script>
+<script  type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-mtop/0.5.7/mtop.js"></script>
+<script  type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-login/0.2.3/login.js"></script>
+<script  type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-mtop/0.5.7/logined.js"></script>
+<script  type="text/javascript" src="http://g.tbcdn.cn/mtb/lib-mtop/0.5.7/plugin/bigpipe.js"></script>
+<script  type="text/javascript" src="http://g.tbcdn.cn/tb/fdc/aplus_h5.js"></script>
+<!--:COMBO-->
+<script>
+    (function (app) {
+        app.config.resourceBase = "http://g.tbcdn.cn/mtb/";
+        app.config.enableMessageLog = false;
+        app.config.enableNavbar = true;
+        app.config.enableToolbar = true;
+        app.config.enableScroll = false;
+        app.config.enableTransition = true;
+        //combo
+        app.config.resourceCombo = function (urls) {
+            var comboArr = [], unComboArr = [];
+            urls.forEach(function (url) {
+                var combopart = getComboPart(url);
+                if (combopart) {
+                    comboArr.push(combopart);
+                } else {
+                    unComboArr.push(url);
+                }
+            });
+            if (comboArr[0]) {
+                unComboArr.push(app.config.resourceBase + "??" + comboArr.join(','));
+            }
+            //console.log(unComboArr);
+            return unComboArr;
+        }
+
+        function getComboPart(url) {
+            if (url.indexOf("http://") !== 0) {
+                return url;
+            }
+            var prefix = app.config.resourceBase;
+            if (url.indexOf(prefix) === 0) {
+                return url.replace(prefix, '');
+            }
+        }
+        //
+        app.definePageMeta({
+            name: "detail",
+            title: "商品详情",
+            route: "",
+            js: ["underscore/1.3.3/underscore.js",
+                "lib-container/namespace.js",
+                "lib-storage/cookie.js",
+                "lib-aplus/1.0.7/aplus.js",
+                "lib-encode/0.0.1/base64utf8.js",
+                "lib-pagenav/0.0.2/pagenav.js",
+                "lib-slider/0.0.2/slider.js",
+                "lib-notification/0.0.1/notification.js",
+                "lib-cart/0.0.2/cartDb.js",
+                "lib-cart/0.0.2/addCart.js",
+                "lib-bottom/0.1.5/bottom.js",
+                "lib-smartbanner/0.2.10/smartbanner.js",
+                "lib-taoplus/0.2.3/taoplus.js",
+                "app-detail/0.1.32/js/detail_min.js"
+            ],
+            css: ["app-detail/0.1.30/css/detail_1x.css"]
+        });
+        $(function () {
+            app.start();
+        });
+        window.addEventListener('load', function () {
+            window.lib.h5init.detectAndSetCookie();
+            //window.lib.h5init.apluslog();
+        });
+    })(window.app);
+</script>
+</body>
+</html>

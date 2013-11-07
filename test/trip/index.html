@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html lang="en" manifest="index.manifest">
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝旅行 - 门票</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta content="false" name="twcClient" id="twcClient"/>
+    <link rel="apple-touch-icon-precomposed" href="http://a.tbcdn.cn/mw/s/hi/tbtouch/images/touch-icon.png"/>
+    <script type="text/javascript" webapp="cm" src="http://g.tbcdn.cn/trip/kissy/1.4.0/seed.js"></script>
+
+    <!--本机环境
+    <link rel="stylesheet" href="../search/index.css" />
+    <link rel="stylesheet" href="../suggestion/index.css" />
+    <link rel="stylesheet" href="../listing/index.css" />
+
+    <script type="text/javascript" src="../../base/zepto.js"></script>
+    <script type="text/javascript" src="../../base/base.js"></script>
+    <script type="text/javascript" src="../../base/jhash-2.1.js"></script>
+    <script type="text/javascript" src="../../base/bridge.js"></script>
+    <script type="text/javascript" src="../../base/loading.js"></script>
+    <script type="text/javascript" src="../../config.js"></script>
+    -->
+
+    <!--日常环境
+    -->
+    <script type="text/javascript">
+        KISSY.Config.daily = true; // 测试环境开关
+        window.loadStartTime = new Date().getTime();
+    </script>
+
+    <link rel="stylesheet" webapp="i" href="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/pages/search/index.css"/>
+    <link rel="stylesheet" webapp="i" href="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/pages/suggestion/index.css"/>
+    <link rel="stylesheet" webapp="i" href="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/pages/listing/index.css"/>
+
+    <!--COMBO:webapp="mc" -->
+    <script type="text/javascript" src="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/base/zepto.js"></script>
+    <script type="text/javascript" src="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/base/base.js"></script>
+    <script type="text/javascript" src="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/base/jhash-2.1.js"></script>
+    <script type="text/javascript" src="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/base/bridge.js"></script>
+    <script type="text/javascript" src="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/base/loading.js"></script>
+    <script type="text/javascript" src="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/config.js"></script>
+
+    <script type="text/javascript"
+            src="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/pages/search/index.js"></script>
+    <script type="text/javascript"
+            src="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/pages/suggestion/index.js"></script>
+    <script type="text/javascript"
+            src="http://g.assets.daily.taobao.net/trip/h5-tk/0.0.8/pages/listing/index.js"></script>
+    <!--:COMBO-->
+
+    <script type="text/javascript">
+        window.loadEndTime = new Date().getTime();
+    </script>
+</head>
+<body>
+<div id="tbh5v0" class="content">
+    <div id="bodyCont" class="screen-wrap fullscreen">
+        <section class="search-block J_sectionBlock none" data-block="search">
+            <section class="search">
+                <form action="">
+                    <div class="search-area">
+                        <input type="text" value="" class="trip-form-text-normal trip-form-search-normal J_search"
+                               placeholder="请输入城市或景点名" autocomplete="off" readonly="true" data-suggestion-hook/>
+                    </div>
+                    <input type="submit" class="trip-btn-blue mt10 J_searchSubmitBtn" value="查询门票"/>
+                </form>
+            </section>
+
+            <section class="city mt20">
+                <div class="location J_location" data-location="">
+                    <div class="text icon J_text"></div>
+                    <div class="tip J_tip">定位城市</div>
+                </div>
+
+                <div class="hots J_hots" id="J_hotCitys">
+                    <p class="trip-loading"></p>
+                </div>
+            </section>
+
+            <section class="attractions none J_hots" id="J_hotAttractions">
+                <div class="hd">热门景点</div>
+                <div class="bd">
+                    <p class="trip-loading"></p>
+                </div>
+            </section>
+        </section>
+
+        <section class="suggestion-block none J_sectionBlock" data-block="suggestion">
+            <section class="search">
+                <form action="">
+                    <div class="search-area">
+                        <input type="text" value=""
+                               class="trip-form-text-normal trip-form-search-normal J_suggestionSearch"
+                               placeholder="请输入城市或景点名" autocomplete="off"/>
+                    </div>
+                    <input type="submit" class="trip-btn-white ml5 J_suggestionSubmitBtn" value="搜索"/>
+                </form>
+            </section>
+
+            <section class="suggestion J_suggestion" id="J_suggestionResult">
+
+            </section>
+
+            <section class="history none J_suggestion" id="J_suggestionHistory">
+                <div class="hd">历史记录</div>
+                <div class="bd"></div>
+            </section>
+        </section>
+
+        <section class="listing-block none J_sectionBlock" data-block="listing">
+            <section class="search">
+                <div class="search-area">
+                    <input type="text" value="" class="trip-form-text-normal trip-form-search-normal J_listingSearch"
+                           placeholder="请输入城市或景点名" autocomplete="off" readonly="true" data-suggestion-hook/>
+                </div>
+            </section>
+
+            <section class="listing J_listing" id="J_listing">
+                <div class="wrapper" id="J_listingWrapper">
+                    <p class="trip-loading"></p>
+                </div>
+
+                <div class="tips J_tips hidden">
+                    已经没有了
+                </div>
+            </section>
+        </section>
+
+        <section class="first-loading">
+            <!--
+            <p class="trip-loading"></p>
+            -->
+        </section>
+    </div>
+</div>
+
+<!--
+-->
+<!--<iframe src="manifest-proxy.htm" frameborder="0"-->
+        <!--style="width:0; height: 0; display: none; line-height: 0; font-size: 0;"></iframe>-->
+
+<script type="text/juicer" id="J_hotCitysTemplate">
+    <ul>
+        {@each _ as city}
+            <li class="${city|hotNameClass}">${city}</li>
+        {@/each}
+    </ul>
+
+
+
+</script>
+
+<script type="text/juicer" id="J_hotAttractionsTemplate">
+    <div class="hd">热门景点</div>
+    <div class="bd">
+        <ul>
+            {@each _ as attractions}
+                <li class="${attractions|hotNameClass}">${attractions}</li>
+            {@/each}
+        </ul>
+    </div>
+
+
+
+</script>
+
+<script type="text/juicer" id="J_suggestionResultTemplate">
+    <div class="bd">
+        <ul>
+            {@each _ as suggest}
+                <li>${suggest.suggestName}</li>
+            {@/each}
+        </ul>
+    </div>
+
+
+
+</script>
+
+<script type="text/juicer" id="J_suggestionHistoryTemplate">
+    <div class="hd">历史记录</div>
+    <div class="bd">
+        <ul>
+            {@each _ as history}
+                <li>${history}</li>
+            {@/each}
+        </ul>
+    </div>
+
+
+
+</script>
+
+<script type="text/juicer" id="J_listingWrapperTemplate">
+    {@if Object.keys(_).length === 0}
+        <div class="error">
+            <p>亲，没有查询到符合条件的门票</p>
+        </div>
+    {@/if}
+    {@each _ as item}
+        <a class="item {@if item.activity}activity{@/if}" href="http://wapp.wapa.taobao.com/trip/ticket/detail.htm?id=${item.itemId}&ttid=XXXXXX@travel_iphone_xxxx">
+            <div class="left thumb">
+                <img src="${item.logoUrl}" alt="" />
+                <em class="arrow"></em>
+            </div>
+
+            <div class="middle">
+                <div class="hd">$${item.title|stringCut, 35}</div>
+                <div class="bd">成交 <em class="sales">${item.salesCount}</em> 笔</div>
+            </div>
+
+            <div class="right price">
+                <em class="${item.discountPrice|priceClassProcess}">&yen;${item.discountPrice|priceProcess}</em> {@if item.current}<em class="current">当日票</em>{@/if}
+            </div>
+        </a>
+    {@/each}
+
+
+
+</script>
+
+<script type="text/juicer" id="J_errorTemplate">
+    <div class="error">
+        <p>${error}</p>
+    </div>
+
+
+
+</script>
+
+<script type="text/javascript">
+    loading.loadingInit();
+    loading.showLoading('<div class="trip-loading"></div><div class="trip-loading-text">正在加载...</div>');
+</script>
+
+<script type="text/javascript">
+    this.EventCenter = Base.extend({initialize: function () {
+    }});
+    this.Global = Base.extend({initialize: function () {
+    }});
+    this.EventCenter = new EventCenter();
+    this.Global = new Global();
+    this.NativeBridge = new Bridge();
+
+    this.onorientationchange = this.repaint = function () {
+        document.body.style.zoom = '1.00001';
+        setTimeout(function () {
+            document.body.style.zoom = '1';
+        }, 0);
+    };
+
+    KISSY.use('h5-tk/pages/search/index, h5-tk/pages/suggestion/index, h5-tk/pages/listing/index', function (S, Search, Suggestion, Listing) {
+        var search = new Search();
+        var suggestion = new Suggestion();
+        var listing = window.listing = new Listing();
+
+        jHash.defaultRoute('search');
+
+        jHash.route('search',
+                function () {
+                    search.viewDisplay();
+                    NativeBridge.setTitle('景点门票');
+                    loading.hideLoading();
+                }
+        );
+
+        jHash.route('list',
+                function () {
+                    EventCenter.trigger('list:refreshListing');
+                    NativeBridge.setTitle('门票列表');
+                    loading.hideLoading();
+                }
+        );
+
+        jHash.processRoute();
+    });
+</script>
+
+</body>
+</html>

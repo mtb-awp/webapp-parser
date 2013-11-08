@@ -1,7 +1,7 @@
 {
     "name": "webapp-parser",
     "description": "The best Grunt plugin ever.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "homepage": "https://github.com/mtb-awp/webapp-parser",
     "author": {
         "name": "wuzhong",
@@ -21,13 +21,15 @@
         "node": ">= 0.8.0"
     },
     "bin":{
-       "appbuild":"bin/main.js"
+       "appbuild":"bin/main.js",
+       "appserver":"bin/httpserver.js"
     },
     "dependencies": {
         "httpsync": ">=0.0.7",
         "buffer-crc32": ">=0.2.1",
         "jsdom": ">=0.8.8",
         "colours": "0.6.0-2",
-        "commander": "1.2.0"
+        "commander": "1.2.0",
+        "express": "3.x"
     }
 }
